@@ -9,7 +9,7 @@ namespace SteveSweeper.Interfaces
 {
     public interface IBoard
     {
-        void Initialise();
+        void Initialise(IDisplay Display);
 
         void ShowBoard();
 

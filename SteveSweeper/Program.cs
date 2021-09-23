@@ -12,23 +12,23 @@ namespace SteveSweeper
     {
         static void Main(string[] args)
         {
-
+            var view = new ConsoleDisplay();
             // board
             IGame game = new Game();
-            game.CreateNewGame();
+            game.CreateNewGame(view);
 
             // test only
             game.DebugBoardDisplay();
 
             while(!game.IsGameOver())
             {
-                var userInput = Console.ReadLine();
+                var userInput = view.ReadLine();
                 userInput = userInput.ToLower().Trim();
                 game.Move(userInput);
             }
 
-            Console.WriteLine("Game Over");
-            Console.ReadLine();
+            view.WriteLine("Game Over");
+            view.ReadLine();
         }
     }
 }

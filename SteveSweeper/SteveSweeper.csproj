@@ -46,11 +46,13 @@
     <Compile Include="Components\Board.cs" />
     <Compile Include="Components\BoardCell.cs" />
     <Compile Include="Components\BombCell.cs" />
+    <Compile Include="Components\ConsoleDisplay.cs" />
     <Compile Include="Components\EnumMove.cs" />
     <Compile Include="Components\Game.cs" />
     <Compile Include="Components\Player.cs" />
     <Compile Include="Interfaces\IBoard.cs" />
     <Compile Include="Interfaces\ICell.cs" />
+    <Compile Include="Interfaces\IDisplay.cs" />
     <Compile Include="Interfaces\IGame.cs" />
     <Compile Include="Interfaces\IPlayer.cs" />
     <Compile Include="Program.cs" />

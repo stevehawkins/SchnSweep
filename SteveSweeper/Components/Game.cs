@@ -9,12 +9,14 @@ namespace SteveSweeper.Components
 {
     public class Game : IGame
     {
+        IDisplay _Display;
         readonly IBoard _PlayerBoard = new Board();
         readonly IPlayer _Player = new Player();
 
-        public void CreateNewGame()
+        public void CreateNewGame(IDisplay Display)
         {
-            _PlayerBoard.Initialise();
+            _Display = Display;
+            _PlayerBoard.Initialise(Display);
             _Player.Initialise();
         }
 
@@ -53,7 +55,7 @@ namespace SteveSweeper.Components
            
             if (PlayerMove == EnumMove.INVALID)
             {
-                Console.WriteLine("Invalid Command use : up / left / right / down");
+                _Display.WriteLine("Invalid Command use : up / left / right / down");
                 return;
             }
 
@@ -61,7 +63,7 @@ namespace SteveSweeper.Components
 
             if(!result)
             {
-                Console.WriteLine("Invalid Move");
+                _Display.WriteLine("Invalid Move");
             }
             else
             {
@@ -71,13 +73,13 @@ namespace SteveSweeper.Components
                     _Player.DecrementLives();                    
                     _Player.BombCount++;
 
-                    Console.WriteLine("BOOM -> ");
+                    _Display.WriteLine("BOOM -> ");
                 }
 
                 _Player.MoveCount++;
             }
 
-            Console.WriteLine($"Position {_Player.CurrentLocation} : Lives {_Player.Lives} : Moves : {_Player.MoveCount}");
+            _Display.WriteLine($"Position {_Player.CurrentLocation} : Lives {_Player.Lives} : Moves : {_Player.MoveCount}");
         }
     }
 }

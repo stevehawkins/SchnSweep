@@ -9,7 +9,7 @@ namespace SteveSweeper.Interfaces
 {
     public interface IGame
     {
-        void CreateNewGame();
+        void CreateNewGame(IDisplay Display);
 
         void Move(string MovePosition);
 

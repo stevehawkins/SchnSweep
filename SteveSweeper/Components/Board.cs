@@ -9,6 +9,7 @@ namespace SteveSweeper.Components
 {
     public class Board : IBoard
     {
+        IDisplay _Display;
         readonly List<string> _CellVals = new List<string> { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J" };
         IDictionary<int, List<ICell>> _Cells; 
         const int _Rows = 10;
@@ -19,8 +20,10 @@ namespace SteveSweeper.Components
         }
 
     
-        public void Initialise()
+        public void Initialise(IDisplay Display)
         {
+            _Display = Display;
+
           // GEN RANDOM FIRST
             Random rand = new Random();
 
@@ -81,14 +84,14 @@ namespace SteveSweeper.Components
                 {
                     if (ele.IsBomb)
                     {
-                        Console.Write("*");
+                        _Display.Write("*");
                     }
                     else
                     {
-                        Console.Write(".");
+                        _Display.Write(".");
                     }
                 }
-                Console.WriteLine();
+                _Display.WriteLine("");
             }
         }
 
